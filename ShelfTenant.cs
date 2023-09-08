@@ -50,5 +50,10 @@ namespace ReaolMarkedet
         {
             BankAccountDetails = bankAccountDetails;
         }
+        // Setter for TotalSale retrieved from Barcode
+        public void UpdateTotalSaleFromBarcode(Barcode barcode)
+        {
+            TotalSale = barcode.GetTotalSalesAmount();
+        }
     }
 }

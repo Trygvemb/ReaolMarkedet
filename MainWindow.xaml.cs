@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace ReaolMarkedet
 {
@@ -23,6 +24,16 @@ namespace ReaolMarkedet
         public MainWindow()
         {
             InitializeComponent();
+
+            Barcode barcode1 = new Barcode();
+            Trace.WriteLine(barcode1.BarcodeInNumbers);
+            Barcode barcode2 = new Barcode();
+            Trace.WriteLine(barcode2.BarcodeInNumbers);
+            Barcode barcode3 = new Barcode();
+            Trace.WriteLine(barcode3.BarcodeInNumbers);
         }
+
+
     }
+
 }
