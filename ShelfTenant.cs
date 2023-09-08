@@ -40,6 +40,7 @@ namespace ReaolMarkedet
             Phone = phone;
             TotalSale = 0;
         }
+
         // retreive BankAccountDetails can implement decryption later on
         public string GetBankAccountDetails()
         {
