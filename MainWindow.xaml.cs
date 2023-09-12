@@ -25,15 +25,45 @@ namespace ReaolMarkedet
         {
             InitializeComponent();
 
-            Barcode barcode1 = new Barcode();
-            Trace.WriteLine(barcode1.BarcodeInNumbers);
-            Barcode barcode2 = new Barcode();
-            Trace.WriteLine(barcode2.BarcodeInNumbers);
-            Barcode barcode3 = new Barcode();
-            Trace.WriteLine(barcode3.BarcodeInNumbers);
+            // Call the method that contains the code
+            RunIntegrationCode();
         }
 
+        private void RunIntegrationCode()
+        {
+            // Arrange
+            var tenant = new ShelfTenant("John", "Doe", "123456789", "john@example.com", "SensitiveAccountDetails");
+            var barcode = new Barcode();
+            var sale1 = new Sale(barcode.BarcodeInNumbers, 100.0);
+            var sale2 = new Sale(barcode.BarcodeInNumbers, 50.0);
+            var sale3 = new Sale(barcode.BarcodeInNumbers, 75.0);
 
+            // Simulate adding sales to the barcode and updating the total sale
+            barcode.AddSale(sale1);
+            barcode.AddSale(sale2);
+            barcode.AddSale(sale3);
+            tenant.UpdateTotalSaleFromBarcode(barcode);
+
+            // Create a Payout instance and set the commission and fine
+            var payout = new Payout();
+            //payout.Commission = 15; // 15% commission rate
+            //payout.Fine = 10.0;
+
+            // Act
+            double totalPayout = payout.CalculateTotalPayout();
+
+            // Assert
+            // Calculate the expected total payout manually based on the formula
+            double expectedTotalPayout = tenant.TotalSale - (tenant.TotalSale * (payout.Commission / 100)) - payout.Fine;
+
+            Trace.WriteLine(tenant.FirstName);
+            Trace.WriteLine(tenant.LastName);
+            Trace.WriteLine(tenant.Phone);
+            Trace.WriteLine(tenant.Email);
+            Trace.WriteLine($"Total Payout: {totalPayout}");
+            Trace.WriteLine($"Expected Total Payout: {expectedTotalPayout}");
+
+        }
     }
-
 }
+

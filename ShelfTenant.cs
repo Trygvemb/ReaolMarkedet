@@ -16,6 +16,8 @@ namespace ReaolMarkedet
         public double TotalSale { get; private set; }
         private string BankAccountDetails { get; set; }
         private static int count = 0;
+
+        public List<Barcode> barcodes { get; } = new List<Barcode>();
         
         // constructor for ShelfTenant that takes all parameters
         public ShelfTenant(string firstName, string lastName, string email, string phone, string bankAccountDetails)
@@ -40,7 +42,7 @@ namespace ReaolMarkedet
             Phone = phone;
             TotalSale = 0;
         }
-
+        
         // retreive BankAccountDetails can implement decryption later on
         public string GetBankAccountDetails()
         {
@@ -55,6 +57,10 @@ namespace ReaolMarkedet
         public void UpdateTotalSaleFromBarcode(Barcode barcode)
         {
             TotalSale = barcode.GetTotalSalesAmount();
+        }
+        public void AddBarcode(Barcode barcode)
+        {
+            barcodes.Add(barcode);
         }
     }
 }

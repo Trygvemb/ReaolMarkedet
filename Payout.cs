@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,20 @@ namespace ReaolMarkedet
             set { _fine = value; } 
         }
 
+        public Payout(ShelfTenant shelfTenant, string barcodeInNumbers) 
+        {
+            
+            foreach (Barcode barcode in shelfTenant.barcodes)
+            {
+                if (barcode.BarcodeInNumbers == barcodeInNumbers)
+                {
+                    // implementerer automatisk udbetaling
+                    string shelfTenantDetails = "";
+                    shelfTenantDetails = $"ID : {shelfTenant.TenantId}/nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}/nTelefon Nummer : {shelfTenant.Phone}/nEmail : {shelfTenant.Email}/nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
+                    Trace.WriteLine(shelfTenantDetails);
+                }
+            }
+        }
 
         // calculate comission of TotalSales and sets it to CommisionDeduction so it can be used to calculate payout 
         private void SetComissionDeduction()
@@ -46,7 +61,7 @@ namespace ReaolMarkedet
         }
         public double CalculateTotalPayout()
         {
-            return TotalSale - CommissionDeduction - Fine;
+            return TotalSale - CommissionDeduction;
         }
     }
 }

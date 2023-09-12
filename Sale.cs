@@ -8,13 +8,23 @@ namespace ReaolMarkedet
 {
     internal class Sale
     {
-        public string BarcodeInNumbers { get; }
+        public Barcode AssociatedBarcode { get; }
         public double Price { get; set; }
+        public double DiscountInPercentage { get; }
+        public double PriceOfSale { get; private set; }
 
-        public Sale(string barcodeInNumbers, double price)
+
+        public Sale(Barcode associatedBarcode, double price)
         {
-            BarcodeInNumbers = barcodeInNumbers;
+            AssociatedBarcode = associatedBarcode;
             Price = price;
+            DiscountInPercentage = associatedBarcode.DiscountInPercentage;
+            PriceOfSale = SubtractDiscount();
+        }
+        private double SubtractDiscount()
+        {
+            PriceOfSale = Price - (Price * (DiscountInPercentage / 100));
+            return PriceOfSale;
         }
     }
 }
