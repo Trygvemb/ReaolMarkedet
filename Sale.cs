@@ -13,7 +13,7 @@ namespace ReaolMarkedet
         public double DiscountInPercentage { get; }
         public double PriceOfSale { get; private set; }
 
-
+        // Constructor for Sale
         public Sale(Barcode associatedBarcode, double price)
         {
             AssociatedBarcode = associatedBarcode;
@@ -21,6 +21,7 @@ namespace ReaolMarkedet
             DiscountInPercentage = associatedBarcode.DiscountInPercentage;
             PriceOfSale = SubtractDiscount();
         }
+        // Calculate the price of sale by subtracting discount
         private double SubtractDiscount()
         {
             PriceOfSale = Price - (Price * (DiscountInPercentage / 100));

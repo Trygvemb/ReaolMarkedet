@@ -9,33 +9,33 @@ namespace ReaolMarkedet
     internal class Barcode
     {
         public string BarcodeInNumbers { get; set; }
-        public double DiscountInPercentage { get; set; }
+        public double DiscountInPercentage { get; private set; }
         public List<Sale> Sales { get; } = new List<Sale>();
 
-        // used to generate a new number for barcode as example and would get removed after implementing existing barcode generator
-        //private static int count = 0;
-
-        // constructor for Barcode. BarcodeInNumbers is used as example. Implementation of existing barcode generator goes in here
+        // Constructor for Barcode. BarcodeInNumbers is used as example. Implementation of existing barcode generator goes in here
         public Barcode(string barcodeInNumbers)
         {
             BarcodeInNumbers = barcodeInNumbers;
             DiscountInPercentage = 0;
         }
+        // Adds sale to the list of sales 
         public void AddSale(Sale sale)
         {
             Sales.Add(sale);
         }
+        // Calculate the total sales amount by going trough each sale in the list of sales and adding the price of sales together
         public double GetTotalSalesAmount()
         {
             double totalSalesAmount = 0;
 
             foreach (Sale sale in Sales)
             {
-                totalSalesAmount += sale.Price;
+                totalSalesAmount += sale.PriceOfSale;
             }
 
             return totalSalesAmount;
         }
+        // Sets discount
         public void SetDiscount(double discountInPercentage)
         {
             DiscountInPercentage = discountInPercentage;
