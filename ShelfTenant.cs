@@ -16,8 +16,6 @@ namespace ReaolMarkedet
         public double TotalSale { get; private set; }
         private string BankAccountDetails { get; set; }
         private static int count = 0;
-
-        public List<Barcode> barcodes { get; } = new List<Barcode>();
         
         // constructor for ShelfTenant that takes all parameters
         public ShelfTenant(string firstName, string lastName, string email, string phone, string bankAccountDetails)
@@ -31,7 +29,7 @@ namespace ReaolMarkedet
             BankAccountDetails = bankAccountDetails;
             TotalSale = 0;
         }
-        // overload for constructor that dosnt take bankaccountdeails
+        // overload for constructor that dont take bankaccountdeails
         public ShelfTenant(string firstName, string lastName, string email, string phone)
         {
             count++;
@@ -40,6 +38,7 @@ namespace ReaolMarkedet
             LastName = lastName;
             Email = email;
             Phone = phone;
+            BankAccountDetails = "";
             TotalSale = 0;
         }
         
@@ -58,9 +57,6 @@ namespace ReaolMarkedet
         {
             TotalSale = barcode.GetTotalSalesAmount();
         }
-        public void AddBarcode(Barcode barcode)
-        {
-            barcodes.Add(barcode);
-        }
+
     }
 }

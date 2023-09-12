@@ -26,9 +26,9 @@ namespace ReaolMarkedet
             InitializeComponent();
 
             // Call the method that contains the code
-            RunIntegrationCode();
+            //RunIntegrationCode();
         }
-
+        /*
         private void RunIntegrationCode()
         {
             // Arrange
@@ -62,7 +62,7 @@ namespace ReaolMarkedet
             Trace.WriteLine(tenant.Email);
             Trace.WriteLine($"Total Payout: {totalPayout}");
             Trace.WriteLine($"Expected Total Payout: {expectedTotalPayout}");
-
+            */
         }
     }
 }
