@@ -9,6 +9,7 @@ namespace ReaolMarkedet
     internal class Barcode
     {
         public string BarcodeInNumbers { get; set; }
+        public double DiscountInPercentage { get; set; }
         public List<Sale> Sales { get; } = new List<Sale>();
 
         // used to generate a new number for barcode as example and would get removed after implementing existing barcode generatot
@@ -19,6 +20,7 @@ namespace ReaolMarkedet
         {            
             count++;
             BarcodeInNumbers = $"{count}";
+            DiscountInPercentage = 0;
         }
         public void AddSale(Sale sale)
         {
@@ -34,6 +36,10 @@ namespace ReaolMarkedet
             }
 
             return totalSalesAmount;
+        }
+        public void SetDiscount(double discountInPercentage)
+        {
+            DiscountInPercentage = discountInPercentage;
         }
 
 

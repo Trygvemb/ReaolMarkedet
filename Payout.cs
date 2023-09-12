@@ -27,6 +27,10 @@ namespace ReaolMarkedet
             set { _fine = value; } 
         }
 
+        public Payout() 
+        {
+
+        }
 
         // calculate comission of TotalSales and sets it to CommisionDeduction so it can be used to calculate payout 
         private void SetComissionDeduction()

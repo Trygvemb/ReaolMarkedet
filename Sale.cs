@@ -10,6 +10,9 @@ namespace ReaolMarkedet
     {
         public string BarcodeInNumbers { get; }
         public double Price { get; set; }
+        public double DiscountInPercentage { get; }
+        public double PriceOfSale { get; set; }
+
 
         public Sale(string barcodeInNumbers, double price)
         {

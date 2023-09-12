@@ -16,6 +16,7 @@ namespace ReaolMarkedet
         public double TotalSale { get; private set; }
         private string BankAccountDetails { get; set; }
         private static int count = 0;
+
         
         // constructor for ShelfTenant that takes all parameters
         public ShelfTenant(string firstName, string lastName, string email, string phone, string bankAccountDetails)
