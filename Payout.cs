@@ -27,17 +27,31 @@ namespace ReaolMarkedet
             set { _fine = value; } 
         }
         // Constructor for Payout that takes shelfTenant and Barcode as parameter. 
+        public Payout(ShelfTenant shelfTenant, Barcode barcode, double fine)
+        {
+            // Potential automatic payout implementation here.
+
+            shelfTenant.UpdateTotalSaleFromBarcode(barcode);
+            TotalSale = shelfTenant.TotalSale;
+            CalculateTotalPayout(fine);
+            string shelfTenantDetails = "";
+            shelfTenantDetails = $"ID : {shelfTenant.TenantId}\nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}\nTelefon Nummer : {shelfTenant.Phone}\nEmail : {shelfTenant.Email}\nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
+            Trace.WriteLine(shelfTenantDetails);
+            Trace.WriteLine($"Til Udbetaling : {TotalPayout}kr.");
+                    
+        }
         public Payout(ShelfTenant shelfTenant, Barcode barcode)
         {
             // Potential automatic payout implementation here.
 
             shelfTenant.UpdateTotalSaleFromBarcode(barcode);
             TotalSale = shelfTenant.TotalSale;
+            CalculateTotalPayout();
             string shelfTenantDetails = "";
             shelfTenantDetails = $"ID : {shelfTenant.TenantId}\nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}\nTelefon Nummer : {shelfTenant.Phone}\nEmail : {shelfTenant.Email}\nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
             Trace.WriteLine(shelfTenantDetails);
-            Trace.WriteLine($"Til Udbetaling : {CalculateTotalPayout()}kr.");
-                    
+            Trace.WriteLine($"Til Udbetaling : {TotalPayout}kr.");
+
         }
 
         // calculate comission of TotalSales and sets it to CommisionDeduction so it can be used to calculate payout 
@@ -53,12 +67,14 @@ namespace ReaolMarkedet
         //Calculate the total payout after commission deduction and possible fines
         public double CalculateTotalPayout(double fine)
         {
+            SetComissionDeduction();
             Fine = fine;
-            return TotalSale - CommissionDeduction - Fine;
+           return TotalPayout = TotalSale - CommissionDeduction - Fine;
         }
         public double CalculateTotalPayout()
         {
-            return TotalSale - CommissionDeduction;
+            SetComissionDeduction();
+            return TotalPayout = TotalSale - CommissionDeduction - Fine;
         }
     }
 }
