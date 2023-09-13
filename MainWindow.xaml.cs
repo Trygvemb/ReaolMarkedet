@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 
+
+
 namespace ReaolMarkedet
 {
     /// <summary>
@@ -25,29 +27,64 @@ namespace ReaolMarkedet
         {
             InitializeComponent();
 
-            // Call the method that contains the code
-            //RunIntegrationCode();
+            // Call your test methods here and write the results to the output
+            TestSalePriceWithDiscount();
+            TestShelfTenantTotalSale();
+            TestPayoutCalculation();
         }
-        /*
-        private void RunIntegrationCode()
+
+        private void TestSalePriceWithDiscount()
         {
             // Arrange
-            var tenant = new ShelfTenant("John", "Doe", "123456789", "john@example.com", "SensitiveAccountDetails");
-            var barcode = new Barcode();
-            var sale1 = new Sale(barcode.BarcodeInNumbers, 100.0);
-            var sale2 = new Sale(barcode.BarcodeInNumbers, 50.0);
-            var sale3 = new Sale(barcode.BarcodeInNumbers, 75.0);
+            var barcode = new Barcode("123456");
+            barcode.SetDiscount(10.0); // 10% discount
+            var sale = new Sale(barcode, 100.0);
 
-            // Simulate adding sales to the barcode and updating the total sale
+            // Act
+            double priceOfSale = sale.PriceOfSale;
+
+            // Assert
+            Debug.WriteLine("TestSalePriceWithDiscount - PriceOfSale: " + priceOfSale);
+        }
+
+        private void TestShelfTenantTotalSale()
+        {
+            // Arrange
+            var tenant = new ShelfTenant("John", "Doe", "john@example.com", "123456789");
+            var barcode = new Barcode("789012");
+            var sale1 = new Sale(barcode, 100.0);
+            var sale2 = new Sale(barcode, 50.0);
+
+            // Simulate adding sales to the barcode and updating the total sale for the tenant
             barcode.AddSale(sale1);
             barcode.AddSale(sale2);
-            barcode.AddSale(sale3);
+            tenant.UpdateTotalSaleFromBarcode(barcode);
+
+            // Act
+            double totalSale = tenant.TotalSale;
+
+            // Assert
+            Debug.WriteLine("TestShelfTenantTotalSale - TotalSale: " + totalSale);
+        }
+
+        private void TestPayoutCalculation()
+        {
+            // Arrange
+            var tenant = new ShelfTenant("John", "Doe", "john@example.com", "123456789");
+            tenant.SetBankAccountDetails("1234-12345678"); // sets bank details
+            var barcode = new Barcode("789012");
+            var sale1 = new Sale(barcode, 100.0);
+            var sale2 = new Sale(barcode, 50.0);
+
+            // Simulate adding sales to the barcode and updating the total sale for the tenant
+            barcode.AddSale(sale1);
+            barcode.AddSale(sale2);
             tenant.UpdateTotalSaleFromBarcode(barcode);
 
             // Create a Payout instance and set the commission and fine
-            var payout = new Payout();
-            //payout.Commission = 15; // 15% commission rate
-            //payout.Fine = 10.0;
+            var payout = new Payout(tenant, barcode);
+            payout.Commission = 15; // 15% commission rate
+            payout.Fine = 10.0;
 
             // Act
             double totalPayout = payout.CalculateTotalPayout();
@@ -55,15 +92,9 @@ namespace ReaolMarkedet
             // Assert
             // Calculate the expected total payout manually based on the formula
             double expectedTotalPayout = tenant.TotalSale - (tenant.TotalSale * (payout.Commission / 100)) - payout.Fine;
-
-            Trace.WriteLine(tenant.FirstName);
-            Trace.WriteLine(tenant.LastName);
-            Trace.WriteLine(tenant.Phone);
-            Trace.WriteLine(tenant.Email);
-            Trace.WriteLine($"Total Payout: {totalPayout}");
-            Trace.WriteLine($"Expected Total Payout: {expectedTotalPayout}");
-            */
+            Debug.WriteLine("TestPayoutCalculation - TotalPayout: " + totalPayout);
+            Debug.WriteLine("ExpectedTotalPayout: " + expectedTotalPayout);
+            
         }
     }
 }
-

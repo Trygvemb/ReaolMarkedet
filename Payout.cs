@@ -34,7 +34,7 @@ namespace ReaolMarkedet
             shelfTenant.UpdateTotalSaleFromBarcode(barcode);
             TotalSale = shelfTenant.TotalSale;
             string shelfTenantDetails = "";
-            shelfTenantDetails = $"ID : {shelfTenant.TenantId}/nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}/nTelefon Nummer : {shelfTenant.Phone}/nEmail : {shelfTenant.Email}/nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
+            shelfTenantDetails = $"ID : {shelfTenant.TenantId}\nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}\nTelefon Nummer : {shelfTenant.Phone}\nEmail : {shelfTenant.Email}\nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
             Trace.WriteLine(shelfTenantDetails);
             Trace.WriteLine($"Til Udbetaling : {CalculateTotalPayout()}kr.");
                     
