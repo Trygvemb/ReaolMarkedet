@@ -8,6 +8,7 @@ namespace ReaolMarkedet
 {
     internal class Barcode
     {
+        public ShelfTenant AssociatedShelfTenant { get; }
         public string BarcodeInNumbers { get; set; }
         public double DiscountInPercentage { get; private set; }
         public List<Sale> Sales { get; } = new List<Sale>();
@@ -18,6 +19,14 @@ namespace ReaolMarkedet
             BarcodeInNumbers = barcodeInNumbers;
             DiscountInPercentage = 0;
         }
+        // Overload for construtor with associatedShelfTenant
+        public Barcode(ShelfTenant associatedShelfTenant, string barcodeInNumbers)
+        {
+            AssociatedShelfTenant = associatedShelfTenant;
+            BarcodeInNumbers = barcodeInNumbers;
+            DiscountInPercentage = 0;
+        }
+
         // Adds sale to the list of sales 
         public void AddSale(Sale sale)
         {

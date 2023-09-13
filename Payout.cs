@@ -27,20 +27,18 @@ namespace ReaolMarkedet
             get { return _fine; } 
             set { _fine = value; } 
         }
-
-        public Payout(ShelfTenant shelfTenant, string barcodeInNumbers) 
+        // Constructor for Payout that takes shelfTenant and Barcode as parameter. 
+        public Payout(ShelfTenant shelfTenant, Barcode barcode)
         {
-            
-            foreach (Barcode barcode in shelfTenant.barcodes)
-            {
-                if (barcode.BarcodeInNumbers == barcodeInNumbers)
-                {
-                    // implementerer automatisk udbetaling
-                    string shelfTenantDetails = "";
-                    shelfTenantDetails = $"ID : {shelfTenant.TenantId}/nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}/nTelefon Nummer : {shelfTenant.Phone}/nEmail : {shelfTenant.Email}/nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
-                    Trace.WriteLine(shelfTenantDetails);
-                }
-            }
+            // Potential automatic payout implementation here.
+
+            shelfTenant.UpdateTotalSaleFromBarcode(barcode);
+            TotalSale = shelfTenant.TotalSale;
+            string shelfTenantDetails = "";
+            shelfTenantDetails = $"ID : {shelfTenant.TenantId}/nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}/nTelefon Nummer : {shelfTenant.Phone}/nEmail : {shelfTenant.Email}/nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
+            Trace.WriteLine(shelfTenantDetails);
+            Trace.WriteLine($"Til Udbetaling : {CalculateTotalPayout()}kr.");
+                    
         }
 
         // calculate comission of TotalSales and sets it to CommisionDeduction so it can be used to calculate payout 
