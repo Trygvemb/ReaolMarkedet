@@ -13,7 +13,6 @@ namespace ReaolMarkedet
         private double _fine = 0; // default fine of 0
 
         public double TotalPayout { get; set; }
-        public string TenantId { get; set; }
         public double TotalSale { get; private set; }
         public double CommissionDeduction { get; private set; }
                         
