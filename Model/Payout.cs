@@ -27,7 +27,7 @@ namespace ReaolMarkedet
             get { return _fine; } 
             set { _fine = value; } 
         }
-        // Constructor for Payout that takes shelfTenant and Barcode as parameter. 
+        // Constructor for Payout that takes shelfTenant, Barcode and fine as parameter. 
         public Payout(ShelfTenant shelfTenant, Barcode barcode, double fine)
         {
             // Potential automatic payout implementation here.
@@ -41,6 +41,7 @@ namespace ReaolMarkedet
             Trace.WriteLine($"Til Udbetaling : {TotalPayout}kr.");
                     
         }
+        // overload of constructor that dos not take fine as a parameter
         public Payout(ShelfTenant shelfTenant, Barcode barcode)
         {
             // Potential automatic payout implementation here.
