@@ -32,5 +32,15 @@ namespace ReaolMarkedet.Controller
             return null;
         }
 
+        public void RemoveBarcode(string barcodeInNumbers)
+        {
+            foreach (Barcode barcode in barcodes)
+            {
+                if (barcode.BarcodeInNumbers == barcodeInNumbers)
+                {
+                    barcodes.Remove(barcode);
+                }
+            }
+        }
     }
 }
