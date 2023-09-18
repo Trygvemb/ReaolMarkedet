@@ -9,5 +9,18 @@ namespace ReaolMarkedet.Controller
 {
     internal class PayoutRepository
     {
+        private List<Payout> payouts;
+
+        public PayoutRepository()
+        {
+            this.payouts = new List<Payout>();
+        }
+
+        public void AddPayout(Payout payout)
+        {
+            payouts.Add(payout);
+        }
+
+        //public Payout GetPayout()
     }
 }
