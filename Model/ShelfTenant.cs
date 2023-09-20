@@ -9,7 +9,7 @@ namespace ReaolMarkedet
 {
     internal class ShelfTenant
     {
-        public string TenantId { get; set; }
+        public int TenantId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
@@ -22,7 +22,7 @@ namespace ReaolMarkedet
         public ShelfTenant(string firstName, string lastName, string email, string phone, string bankAccountDetails)
         {
             count++;
-            TenantId = $"T{count}";
+            TenantId = count;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -34,7 +34,7 @@ namespace ReaolMarkedet
         public ShelfTenant(string firstName, string lastName, string email, string phone)
         {
             count++;
-            TenantId = $"T{count}";
+            TenantId = count;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -42,7 +42,16 @@ namespace ReaolMarkedet
             BankAccountDetails = "";
             TotalSale = 0;
         }
-        
+        public ShelfTenant(int tenantId, string firstName, string lastName, string email, string phone, string bankAccountDetails, double totalSale)
+        {
+            TenantId = tenantId;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Phone = phone;
+            BankAccountDetails = bankAccountDetails;
+            TotalSale = totalSale;
+        }
         // retreive BankAccountDetails can implement decryption later on
         public string GetBankAccountDetails()
         {
