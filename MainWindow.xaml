@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReaolMarkedet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1005">
     <Grid>
+        <!-- Header Row -->
+        <TextBlock Text="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <TextBlock Text="Navn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,10,0,0"/>
+        <TextBlock Text="Telefon nr." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,10,0,0"/>
+        <TextBlock Text="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,10,0,0"/>
+        <TextBlock Text="Stregkode(r)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,10,0,0"/>
+        <TextBlock Text="Totalsalg" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="460,10,0,0"/>
+        <TextBlock Text="15% Kommision" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,10,0,0"/>
+        <TextBlock Text="Bøde(r)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="660,10,0,0"/>
+        <TextBlock Text="Til Udbetaling" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="760,10,0,0"/>
+        <TextBlock Text="Reg og Konto nr." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="860,10,0,0"/>
 
+        <!-- Example Payout Data -->
+        <TextBlock Text="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0"/>
+        <TextBlock Text="Peter Jensen" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,40,0,0"/>
+        <TextBlock Text="22318371" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,40,0,0"/>
+        <TextBlock Text="PJ@mail.com" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,40,0,0"/>
+        <TextBlock Text="11111111" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,40,0,0"/>
+        <TextBlock Text="1250 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="460,40,0,0"/>
+        <TextBlock Text="187.50 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,40,0,0"/>
+        <TextBlock Text="0 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="660,40,0,0"/>
+        <TextBlock Text="1062.50 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="760,40,0,0"/>
+        <TextBlock Text="9438-1234567" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="860,40,0,0"/>
     </Grid>
 </Window>
