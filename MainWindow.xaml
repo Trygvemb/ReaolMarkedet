@@ -8,27 +8,47 @@
         Title="MainWindow" Height="450" Width="1005">
     <Grid>
         <!-- Header Row -->
-        <TextBlock Text="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <TextBlock Text="Navn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,10,0,0"/>
-        <TextBlock Text="Telefon nr." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,10,0,0"/>
-        <TextBlock Text="Email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,10,0,0"/>
-        <TextBlock Text="Stregkode(r)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,10,0,0"/>
-        <TextBlock Text="Totalsalg" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="460,10,0,0"/>
-        <TextBlock Text="15% Kommision" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,10,0,0"/>
-        <TextBlock Text="Bøde(r)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="660,10,0,0"/>
-        <TextBlock Text="Til Udbetaling" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="760,10,0,0"/>
-        <TextBlock Text="Reg og Konto nr." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="860,10,0,0"/>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="ID" Grid.Column="0"/>
+            <TextBlock Text="Navn" Grid.Column="1"/>
+            <TextBlock Text="Telefon nr." Grid.Column="2"/>
+            <TextBlock Text="Email" Grid.Column="3"/>
+            <TextBlock Text="Stregkode(r)" Grid.Column="4"/>
+            <TextBlock Text="Totalsalg" Grid.Column="5"/>
+            <TextBlock Text="15% Kommision" Grid.Column="6"/>
+            <TextBlock Text="Bøde(r)" Grid.Column="7"/>
+            <TextBlock Text="Til Udbetaling" Grid.Column="8"/>
+            <TextBlock Text="Reg og Konto nr." Grid.Column="9"/>
+        </Grid>
 
         <!-- Example Payout Data -->
-        <TextBlock Text="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0"/>
-        <TextBlock Text="Peter Jensen" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,40,0,0"/>
-        <TextBlock Text="22318371" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,40,0,0"/>
-        <TextBlock Text="PJ@mail.com" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,40,0,0"/>
-        <TextBlock Text="11111111" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,40,0,0"/>
-        <TextBlock Text="1250 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="460,40,0,0"/>
-        <TextBlock Text="187.50 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="560,40,0,0"/>
-        <TextBlock Text="0 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="660,40,0,0"/>
-        <TextBlock Text="1062.50 kr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="760,40,0,0"/>
-        <TextBlock Text="9438-1234567" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="860,40,0,0"/>
+        <StackPanel Background="LightGray" Margin="10" Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="1" Width="50"/>
+            <TextBlock Text="Peter Jensen" Width="100"/>
+            <TextBlock Text="22318371" Width="100"/>
+            <TextBlock Text="PJ@mail.com" Width="150"/>
+            <TextBlock Text="11111111" Width="100"/>
+            <TextBlock Text="1250 kr" Width="80"/>
+            <TextBlock Text="187.50 kr" Width="100"/>
+            <TextBlock Text="0 kr" Width="80"/>
+            <TextBlock Text="1062.50 kr" Width="120"/>
+            <TextBlock Text="9438-1234567" Width="150"/>
+        </StackPanel>
+
+        <!-- Add more StackPanels for additional rows of data -->
     </Grid>
 </Window>
+
