@@ -8,7 +8,7 @@ namespace ReaolMarkedet.Model
 {
     internal class Barcode
     {
-        public ShelfTenant AssociatedShelfTenant { get; }
+        public int AssociatedShelfTenantId { get; }
         public string BarcodeInNumbers { get; set; }
         public double DiscountInPercentage { get; private set; }
         public List<Sale> Sales { get; } = new List<Sale>();
@@ -20,11 +20,18 @@ namespace ReaolMarkedet.Model
             DiscountInPercentage = 0;
         }
         // Overload for construtor with associatedShelfTenant
-        public Barcode(ShelfTenant associatedShelfTenant, string barcodeInNumbers)
+        public Barcode(int associatedShelfTenantId, string barcodeInNumbers)
         {
-            AssociatedShelfTenant = associatedShelfTenant;
+            AssociatedShelfTenantId = associatedShelfTenantId;
             BarcodeInNumbers = barcodeInNumbers;
             DiscountInPercentage = 0;
+        }
+        // Overload for construtor with associatedShelfTenant and discountInPercentage used when retreiving data from DB
+        public Barcode(int associatedShelfTenantId, string barcodeInNumbers, double discountInPercentage)
+        {
+            AssociatedShelfTenantId = associatedShelfTenantId;
+            BarcodeInNumbers = barcodeInNumbers;
+            DiscountInPercentage = discountInPercentage;
         }
 
         // Adds sale to the list of sales 

@@ -15,7 +15,8 @@ namespace ReaolMarkedet.Controller
     internal class ShelfTenantRepository
     {
         private string connectionString;
-
+        
+        // Creates connection between Database and the program using the apsettings.json file and the string above
         public ShelfTenantRepository()
         {
             IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
@@ -23,6 +24,7 @@ namespace ReaolMarkedet.Controller
             this.connectionString = connectionString;
         }
 
+        // method for adding shelftenant to repository.
         public void AddShelfTenant(ShelfTenant shelfTenant)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -46,7 +48,8 @@ namespace ReaolMarkedet.Controller
             }
         }
 
-        public ShelfTenant GetShelfTenant(string tenantId)
+        // method for retreiving shelftenant from DB.
+        public ShelfTenant GetShelfTenant(int tenantId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -56,7 +59,7 @@ namespace ReaolMarkedet.Controller
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@TenantId", tenantId);
+                    command.Parameters.AddWithValue("@TenantId", tenantId.ToString());
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -81,7 +84,20 @@ namespace ReaolMarkedet.Controller
             return null;
         }
 
-        public void RemoveShelfTenant(string tenantId)
+        public void UpdateShelfTenant(int tenantId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+               //
+               //   add method for updating shelftenant here
+               //
+            }
+        }
+
+        // method for deleting shelftenant.
+        public void RemoveShelfTenant(int tenantId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -91,7 +107,7 @@ namespace ReaolMarkedet.Controller
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@TenantId", tenantId);
+                    command.Parameters.AddWithValue("@TenantId", tenantId.ToString());
                     command.ExecuteNonQuery();
                 }
             }

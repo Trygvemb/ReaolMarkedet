@@ -33,6 +33,7 @@ namespace ReaolMarkedet
             Price = price;
             DiscountInPercentage = associatedBarcode.DiscountInPercentage;
             PriceOfSale = SubtractDiscount();
+
         }
         // Calculate the price of sale by subtracting discount
         private double SubtractDiscount()

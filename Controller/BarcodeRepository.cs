@@ -56,11 +56,10 @@ namespace ReaolMarkedet.Controller
                         if (reader.Read())
                         {
                             return new Barcode
-                            {
-                                BarcodeInNumbers = reader["BarcodeInNumbers"].ToString(),
-                                DiscountInPercentage = Convert.ToDouble(reader["DiscountInPercentage"]),
-                                // You can retrieve other properties as needed
-                            };
+                            (
+                                reader["BarcodeInNumbers"].ToString(),
+                                Convert.ToDouble(reader["DiscountInPercentage"])
+                            );
                         }
                     }
                 }

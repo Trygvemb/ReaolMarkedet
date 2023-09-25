@@ -41,6 +41,7 @@ namespace ReaolMarkedet
             Phone = phone;
             TotalSale = 0;
         }
+        // overload for constructer with all parameters including tenantId, used when retrieving data from DB
         public ShelfTenant(int tenantId, string firstName, string lastName, string email, string phone, string bankAccountDetails, double totalSale)
         {
             TenantId = tenantId;

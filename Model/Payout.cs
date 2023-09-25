@@ -28,6 +28,27 @@ namespace ReaolMarkedet
             get { return _fine; } 
             set { _fine = value; } 
         }
+
+        private static int count = 0;
+
+        public Payout(double fine, double totalSale)
+        {
+            count++;
+            this.payoutId = count;
+            TotalSale = totalSale;
+            Fine = fine;
+        }
+        public Payout(int payoutId, double commission, double fine, double totalSale, double totalPayout)
+        {
+            
+            this.payoutId = payoutId;
+            TotalPayout = totalPayout;
+            TotalSale = totalSale;
+            Commission = commission;
+            Fine = fine;
+        }
+
+       
         // Constructor for Payout that takes shelfTenant, Barcode and fine as parameter. 
         public Payout(ShelfTenant shelfTenant, Barcode barcode, double fine)
         {
@@ -40,7 +61,7 @@ namespace ReaolMarkedet
             shelfTenantDetails = $"ID : {shelfTenant.TenantId}\nNavn : {shelfTenant.FirstName} {shelfTenant.LastName}\nTelefon Nummer : {shelfTenant.Phone}\nEmail : {shelfTenant.Email}\nBank Konto Detaljer {shelfTenant.GetBankAccountDetails()} ";
             Trace.WriteLine(shelfTenantDetails);
             Trace.WriteLine($"Til Udbetaling : {TotalPayout}kr.");
-                    
+
         }
         // overload of constructor that dos not take fine as a parameter
         public Payout(ShelfTenant shelfTenant, Barcode barcode)
@@ -57,16 +78,13 @@ namespace ReaolMarkedet
 
         }
 
+
         // calculate comission of TotalSales and sets it to CommisionDeduction so it can be used to calculate payout 
         private void SetComissionDeduction()
         {
             CommissionDeduction = TotalSale * (Commission / 100);
         }
-        // Method that loads tenant data. Needs to get filled in after implementation of database.
-        private void LoadShelfTenantData()
-        {
-            
-        }
+
         //Calculate the total payout after commission deduction and possible fines
         public double CalculateTotalPayout(double fine)
         {
@@ -81,3 +99,5 @@ namespace ReaolMarkedet
         }
     }
 }
+
+
