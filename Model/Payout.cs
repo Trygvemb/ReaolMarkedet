@@ -13,6 +13,7 @@ namespace ReaolMarkedet
         private double _commission = 15; // default commission rate of 15%
         private double _fine = 0; // default fine of 0
 
+        public int payoutId { get; set; }
         public double TotalPayout { get; set; }
         public double TotalSale { get; private set; }
         public double CommissionDeduction { get; private set; }

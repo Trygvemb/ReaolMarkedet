@@ -27,7 +27,7 @@ namespace ReaolMarkedet
             LastName = lastName;
             Email = email;
             Phone = phone;
-            BankAccountDetails = bankAccountDetails;
+            SetBankAccountDetails(bankAccountDetails);
             TotalSale = 0;
         }
         // overload for constructor that dont take bankaccountdeails
@@ -39,7 +39,6 @@ namespace ReaolMarkedet
             LastName = lastName;
             Email = email;
             Phone = phone;
-            BankAccountDetails = "";
             TotalSale = 0;
         }
         public ShelfTenant(int tenantId, string firstName, string lastName, string email, string phone, string bankAccountDetails, double totalSale)
@@ -49,13 +48,14 @@ namespace ReaolMarkedet
             LastName = lastName;
             Email = email;
             Phone = phone;
-            BankAccountDetails = bankAccountDetails;
+            SetBankAccountDetails(bankAccountDetails);
             TotalSale = totalSale;
         }
         // retreive BankAccountDetails can implement decryption later on
         public string GetBankAccountDetails()
         {
             return BankAccountDetails;
+            
         }
         // sets BankAccountDetails can implement encryption later on 
         public void SetBankAccountDetails(string bankAccountDetails)

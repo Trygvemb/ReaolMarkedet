@@ -64,19 +64,15 @@ namespace ReaolMarkedet.Controller
                         {
                             return new ShelfTenant
                             (
-                                tenantId = reader["TenantId"].Toint3(),
-                                firstName = reader["FirstName"].ToString(),
-                                lastName, email, phone, bankAccountDetails
-                            )
-                            {
-                                TenantId = reader["TenantId"].ToString(),
-                                FirstName = reader["FirstName"].ToString(),
-                                LastName = reader["LastName"].ToString(),
-                                Phone = reader["Phone"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                TotalSale = Convert.ToDouble(reader["TotalSale"]),
-                                // You can retrieve other properties as needed
-                            };
+                                reader.GetInt32(reader.GetOrdinal("TenantId")),
+                                reader["FirstName"].ToString(),
+                                reader["LastName"].ToString(),
+                                reader["Email"].ToString(),
+                                reader["Phone"].ToString(),
+                                reader["AccountDetails"].ToString(),
+                                reader.GetDouble(reader.GetOrdinal("TotalSale"))
+                            );
+
                         }
                     }
                 }
