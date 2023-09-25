@@ -45,7 +45,7 @@ namespace ReaolMarkedet.Controller
             {
                 connection.Open();
 
-                string sql = "SELECT BarcodeInNumbers, DiscountInPercentage FROM RM_BARCODE WHERE BarcodeInNumbers = @BarcodeInNumbers";
+                string sql = "SELECT AssociatedShelfTenantId BarcodeInNumbers, DiscountInPercentage FROM RM_BARCODE WHERE BarcodeInNumbers = @BarcodeInNumbers";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -57,8 +57,9 @@ namespace ReaolMarkedet.Controller
                         {
                             return new Barcode
                             (
+                                reader.GetInt32(reader.GetOrdinal("AssociatedShelfTenantId")),
                                 reader["BarcodeInNumbers"].ToString(),
-                                Convert.ToDouble(reader["DiscountInPercentage"])
+                                Convert.ToDouble(reader.GetOrdinal("DiscountInPercentage"))
                             );
                         }
                     }

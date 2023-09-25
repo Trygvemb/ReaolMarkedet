@@ -11,10 +11,13 @@ namespace ReaolMarkedet
     {
         public int SaleId { get; set; } 
         public Barcode AssociatedBarcode { get; }
+        public string AssociatedBarcodeInNumbers { get; }
         public double Price { get; set; }
         public double DiscountInPercentage { get; }
         public double PriceOfSale { get; private set; }
-        static int count = 0;
+
+        
+        private static int count = 0;
 
         // Constructor for Sale
         public Sale(Barcode associatedBarcode, double price)
@@ -22,17 +25,19 @@ namespace ReaolMarkedet
             count++;
             SaleId = count;
             AssociatedBarcode = associatedBarcode;
+            AssociatedBarcodeInNumbers = associatedBarcode.BarcodeInNumbers;
             Price = price;
             DiscountInPercentage = associatedBarcode.DiscountInPercentage;
             PriceOfSale = SubtractDiscount();
         }
-        public Sale(int saleId, Barcode associatedBarcode, double price)
+        public Sale(int saleId, Barcode associatedBarcode, double price, double discountInPercentage, double priceOfSale)
         {
             SaleId = saleId;
             AssociatedBarcode = associatedBarcode;
+            AssociatedBarcodeInNumbers = associatedBarcode.BarcodeInNumbers;
             Price = price;
-            DiscountInPercentage = associatedBarcode.DiscountInPercentage;
-            PriceOfSale = SubtractDiscount();
+            DiscountInPercentage = discountInPercentage;
+            PriceOfSale = priceOfSale;
 
         }
         // Calculate the price of sale by subtracting discount
